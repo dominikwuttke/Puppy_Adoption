@@ -1,12 +1,14 @@
-# Put title of your app here
+# Puppy_Adoption
 
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
-![Workflow result](https://github.com/<OWNER>/<REPOSITORY>/workflows/Check/badge.svg)
+![Workflow result](https://github.com/dominikwuttke/Puppy_Adoption/workflows/Check/badge.svg)
 
 
 ## :scroll: Description
-<!--- Describe your app in one or two sentences -->
+
+An App which lists cute little puppys, who are in search for a new home.
+Each Puppy tells it's own story, so you know what you can expect from them.
 
 
 ## :bulb: Motivation and Context

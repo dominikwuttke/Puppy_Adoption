@@ -32,10 +32,10 @@ private val LightColorPalette = lightColors(
     primary = purple500,
     primaryVariant = purple700,
     secondary = teal200,
-    background = Color(0xFF4218bf),//blue800,
+    background = Color(0xFF4218bf), // blue800,
     surface = Color(0xFF00008d),
-    onSurface = Color(0xFFFFFFFF)
-
+    onSurface = Color(0xFFFFFFFF),
+    onBackground = Color(0xFFFFFFFF),
         /* Other default colors to override
 
 

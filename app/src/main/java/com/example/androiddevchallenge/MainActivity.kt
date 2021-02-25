@@ -18,10 +18,8 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -30,13 +28,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.example.androiddevchallenge.views.CreatePuppyList
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.viewmodel.OverViewViewModel
 import com.example.androiddevchallenge.viewmodel.OverViewViewModelFactory
+import com.example.androiddevchallenge.views.CreatePuppyList
 import com.example.androiddevchallenge.views.PuppyDetail
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,36 +53,30 @@ fun MyApp() {
     Surface(color = MaterialTheme.colors.background) {
         val navController = rememberNavController()
 
-        NavHost(navController = navController, startDestination = "OverView" ){
+        NavHost(navController = navController, startDestination = "OverView") {
 
-            composable("OverView"){
-                val desc = "Felix is a  lovely little "
-                val viewModel = viewModel<OverViewViewModel>(factory = OverViewViewModelFactory(navController))
-                /*val pup = Puppy(R.drawable.puppy_1,"Felix","Libanese",
-                    8,"Short",20)
-                val pup2 = Puppy(R.drawable.puppy_2,"Felix","Libanese",
-                    8,"Short",15)
-                val puppyList = listOf(PuppyData.puppyList)*/
-                CreatePuppyList(PuppyData.puppyList)
+            composable("OverView") {
+
+                viewModel<OverViewViewModel>(factory = OverViewViewModelFactory(navController))
+                CreatePuppyList(Puppylists.puppyList)
             }
-            composable("detailscreen/{puppy}",arguments = listOf(navArgument("puppy") {
+            composable(
+                "detailscreen/{puppy}",
+                arguments = listOf(
+                    navArgument("puppy") {
 
-                type = NavType.StringType/*NavType.SerializableType(Puppy::class.java)*/ })){
+                        type = NavType.StringType/*NavType.SerializableType(Puppy::class.java)*/
+                    }
+                )
+            ) {
                 val args = it.arguments?.getString("puppy")
-                val puppy = Gson().fromJson(args,Puppy::class.java)
-               
-              
+                val puppy = Gson().fromJson(args, Puppy::class.java)
 
-               
-              
-
-               PuppyDetail(puppy)
-                
-
+                PuppyDetail(puppy)
             }
         }
 
-    //Text(text = "Ready... Set... GOOOOOOO!")
+        // Text(text = "Ready... Set... GOOOOOOO!")
     }
 }
 
